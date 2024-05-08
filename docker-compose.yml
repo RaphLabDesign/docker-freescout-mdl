@@ -25,7 +25,7 @@ services:
     - DB_PASS=r461J149D3clSf54
     
     - ADMIN_EMAIL=rlabrecque@mdlenergie.com
-    - ADMIN_PASS=Ze007bra
+    - ADMIN_PASS=Password123
     - ENABLE_SSL_PROXY=FALSE
     - DISPLAY_ERRORS=FALSE
     - TIMEZONE=America/Toronto
