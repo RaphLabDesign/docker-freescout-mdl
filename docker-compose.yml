@@ -20,9 +20,9 @@ services:
     - CONTAINER_NAME=freescout-app
     
     - DB_HOST=freescout-db
-    - DB_NAME=freescout
-    - DB_USER=freescout
-    - DB_PASS=freescout
+    - DB_NAME=freescoutdb
+    - DB_USER=freescoutuser
+    - DB_PASS=Ze007bra
 
     - SITE_URL=http://freescout.example.com
     - ADMIN_EMAIL=admin@admin.com
@@ -39,9 +39,9 @@ services:
       - ./db:/var/lib/mysql
     environment:
       - ROOT_PASS=password
-      - DB_NAME=freescout
-      - DB_USER=freescout
-      - DB_PASS=freescout
+      - DB_NAME=freescoutdb
+      - DB_USER=freescoutuser
+      - DB_PASS=Ze007bra
 
       - CONTAINER_NAME=freescout-db
     restart: always
@@ -57,9 +57,9 @@ services:
       - CONTAINER_NAME=freescout-db-backup
       - DB_HOST=freescout-db
       - DB_TYPE=mariadb
-      - DB_NAME=freescout
-      - DB_USER=freescout
-      - DB_PASS=freescout
+      - DB_NAME=freescoutdb
+      - DB_USER=freescoutuser
+      - DB_PASS=Ze007bra
       - DB01_BACKUP_INTERVAL=1440
       - DB01_BACKUP_BEGIN=0000
       - DB_CLEANUP_TIME=8640
