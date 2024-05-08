@@ -23,13 +23,12 @@ services:
     - DB_NAME=freescoutdb
     - DB_USER=freescoutuser
     - DB_PASS=Ze007bra
-
-    - SITE_URL=http://freescout.example.com
-    - ADMIN_EMAIL=admin@admin.com
-    - ADMIN_PASS=freescout
+    
+    - ADMIN_EMAIL=rlabrecque@mdlenergie.com
+    - ADMIN_PASS=Ze007bra
     - ENABLE_SSL_PROXY=FALSE
     - DISPLAY_ERRORS=FALSE
-    - TIMEZONE=America/Vancouver
+    - TIMEZONE=America/Toronto
     restart: always
 
   freescout-db:
