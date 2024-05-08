@@ -22,7 +22,7 @@ services:
     - DB_HOST=freescout-db
     - DB_NAME=freescoutdb
     - DB_USER=freescoutuser
-    - DB_PASS=Ze007bra
+    - DB_PASS=r461J149D3clSf54
     
     - ADMIN_EMAIL=rlabrecque@mdlenergie.com
     - ADMIN_PASS=Ze007bra
@@ -40,7 +40,7 @@ services:
       - ROOT_PASS=password
       - DB_NAME=freescoutdb
       - DB_USER=freescoutuser
-      - DB_PASS=Ze007bra
+      - DB_PASS=r461J149D3clSf54
 
       - CONTAINER_NAME=freescout-db
     restart: always
@@ -58,7 +58,7 @@ services:
       - DB_TYPE=mariadb
       - DB_NAME=freescoutdb
       - DB_USER=freescoutuser
-      - DB_PASS=Ze007bra
+      - DB_PASS=r461J149D3clSf54
       - DB01_BACKUP_INTERVAL=1440
       - DB01_BACKUP_BEGIN=0000
       - DB_CLEANUP_TIME=8640
