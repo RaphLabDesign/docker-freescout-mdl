@@ -1,0 +1,44 @@
+
+version: '3.4'
+services:
+  netbox:
+    ports:
+    - 5080:8080
+    volumes:
+    - netbox-config:/etc/netbox/config:z,ro
+    - netbox-media-files:/opt/netbox/netbox/media:z,rw
+    - netbox-reports-files:/opt/netbox/netbox/reports:z,rw
+    - netbox-scripts-files:/opt/netbox/netbox/scripts:z,rw
+    healthcheck:
+      retries: 15
+  netbox-worker:
+    volumes:
+    - netbox-config:/etc/netbox/config:z,ro
+    - netbox-media-files:/opt/netbox/netbox/media:z,rw
+    - netbox-reports-files:/opt/netbox/netbox/reports:z,rw
+    - netbox-scripts-files:/opt/netbox/netbox/scripts:z,rw
+  netbox-housekeeping:
+    volumes:
+    - netbox-config:/etc/netbox/config:z,ro
+    - netbox-media-files:/opt/netbox/netbox/media:z,rw
+    - netbox-reports-files:/opt/netbox/netbox/reports:z,rw
+    - netbox-scripts-files:/opt/netbox/netbox/scripts:z,rw
+
+volumes:
+  netbox-config:
+    external:
+      name: netbox-config
+  netbox-media-files:
+    external:
+      name: netbox-media-files
+  netbox-reports-files:
+    external:
+      name: netbox-reports-files
+  netbox-scripts-files:
+    external:
+      name: netbox-scripts-files
+
+networks:
+  bridge:
+    external:
+      name: bridge
