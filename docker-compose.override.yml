@@ -1,42 +1,37 @@
 
 version: '3.4'
 services:
-  netbox:
+  freescout-app:
     ports:
-    - 5080:8080
+      - 88:80
     volumes:
-    - netbox-config:/etc/netbox/config:z,ro
-    - netbox-media-files:/opt/netbox/netbox/media:z,rw
-    - netbox-reports-files:/opt/netbox/netbox/reports:z,rw
-    - netbox-scripts-files:/opt/netbox/netbox/scripts:z,rw
-    healthcheck:
-      retries: 15
-  netbox-worker:
+      - freescout-data:/data
+      - freescout-logs:/www/logs
+    restart: unless-stopped
+  freescout-db:
+    ports:
+      - 3300:3306
     volumes:
-    - netbox-config:/etc/netbox/config:z,ro
-    - netbox-media-files:/opt/netbox/netbox/media:z,rw
-    - netbox-reports-files:/opt/netbox/netbox/reports:z,rw
-    - netbox-scripts-files:/opt/netbox/netbox/scripts:z,rw
-  netbox-housekeeping:
+      - freescout-db:/var/lib/mysql
+    restart: unless-stopped
+  freescout-db-backup:
     volumes:
-    - netbox-config:/etc/netbox/config:z,ro
-    - netbox-media-files:/opt/netbox/netbox/media:z,rw
-    - netbox-reports-files:/opt/netbox/netbox/reports:z,rw
-    - netbox-scripts-files:/opt/netbox/netbox/scripts:z,rw
+      - freescout-db-backup:/backup
+    restart: unless-stopped
 
 volumes:
-  netbox-config:
+  freescout-app:
     external:
-      name: netbox-config
-  netbox-media-files:
+      name: freescout-data
+  freescout-logs:
     external:
-      name: netbox-media-files
-  netbox-reports-files:
+      name: freescout-logs
+  freescout-db:
     external:
-      name: netbox-reports-files
-  netbox-scripts-files:
+      name: freescout-db
+  freescout-db-backup:
     external:
-      name: netbox-scripts-files
+      name: freescout-db-backup
 
 networks:
   bridge:
