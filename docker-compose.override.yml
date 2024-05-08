@@ -1,26 +1,36 @@
-
 version: '3.4'
 services:
-  glpi:
+  freescout-app:
     ports:
-      - 86:80
+      - 88:80
     volumes:
-      - glpi_data:/var/www/html/glpi
+      - freescout-data:/data
+      - freescout-logs:/www/logs
     restart: unless-stopped
-  mariadb:
+  freescout-db:
     ports:
       - 3300:3306
     volumes:
-      - glpi_db:/var/lib/mysql
+      - freescout-db:/var/lib/mysql
+    restart: unless-stopped
+  freescout-db-backup:
+    volumes:
+      - freescout-db-backup:/backup
     restart: unless-stopped
 
 volumes:
-  glpi_data:
+  freescout-app:
     external:
-      name: glpi_data
-  glpi_db:
+      name: freescout-data
+  freescout-logs:
     external:
-      name: glpi_db
+      name: freescout-logs
+  freescout-db:
+    external:
+      name: freescout-db
+  freescout-db-backup:
+    external:
+      name: freescout-db-backup
 
 networks:
   bridge:
